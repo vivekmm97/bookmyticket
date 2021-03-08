@@ -1,0 +1,18 @@
+<%= form_for([@movie, @booking]) do |form| %>
+  
+  <div class="field">
+    <%= form.label :coupon_code %>
+    <%= form.text_field :coupon_code, placeholder: 'Enter Your Coupon Code' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seat_count %>
+    <%= form.number_field :seat_count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  
+<% end %>
+

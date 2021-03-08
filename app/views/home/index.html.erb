@@ -1,0 +1,8 @@
+
+<%if @user_type == 'Admin'%>
+<%= link_to "Add Shows", theatres_path%>
+
+<%elsif @user_type == 'Normal'%>
+<h1>This Is User Home</h1>
+<%= link_to 'Book A Show', movies_path%>
+<%end%>

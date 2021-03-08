@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coupon_code: MyString
+  user: one
+  movie: one
+  total_fee: 1
+  seat_count: 1
+
+two:
+  coupon_code: MyString
+  user: two
+  movie: two
+  total_fee: 1
+  seat_count: 1

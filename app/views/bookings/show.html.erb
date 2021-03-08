@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Coupon code:</strong>
+  <%= @booking.coupon_code %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @booking.user %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @booking.movie %>
+</p>
+
+<p>
+  <strong>Total fee:</strong>
+  <%= @booking.total_fee %>
+</p>
+
+<p>
+  <strong>Seat count:</strong>
+  <%= @booking.seat_count %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>

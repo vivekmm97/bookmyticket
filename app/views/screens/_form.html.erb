@@ -1,0 +1,27 @@
+<%= form_for([ @theatre, @screen]) do |form| %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.text_field :date, placeholder: 'yyyy-mm-dd' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fee %>
+    <%= form.number_field :fee %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :theatre_id %>
+  </div>
+
+  <div class="field">
+    <%= form.collection_select :timing_id, Timing.all, :id, :time %>
+  </div>
+
+  <div class="field">
+    <%= form.collection_select :seat_id, Seat.all, :id, :seat_count %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

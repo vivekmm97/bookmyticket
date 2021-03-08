@@ -1,0 +1,21 @@
+<%= form_for([@movie, @coupon]) do |form| %>
+  
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coupon_count %>
+    <%= form.number_field :coupon_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :percentage %>
+    <%= form.number_field :percentage %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Movies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Theatre</th>
+      <th>Show Time</th>
+      <th>Seats Available</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.name %></td>
+        <td><%= movie.language %></td>
+        <td><%= movie.screen.theatre.name %></td>
+        <td><%=Timing.find(movie.screen.timing_id).time %></td>
+        <td><%= Seat.find(movie.screen.seat_id).seat_count %></td>
+        <td><%= link_to 'Show', movie %></td>
+        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add Coupon', new_movie_coupon_path(movie) %></td>
+        <td><%= link_to 'Select Movie', new_movie_booking_path(movie)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

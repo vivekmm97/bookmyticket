@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @screen.date %>
+</p>
+
+<p>
+  <strong>Fee:</strong>
+  <%= @screen.fee %>
+</p>
+
+<p>
+  <strong>Theatre:</strong>
+  <%= @screen.theatre %>
+</p>
+
+<p>
+  <strong>Seat count:</strong>
+  <%= @screen.seat_count %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @screen.time %>
+</p>
+
+<%= link_to 'Edit', edit_screen_path(@screen) %> |
+<%= link_to 'Back', screens_path %>

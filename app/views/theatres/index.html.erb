@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Theatres</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @theatres.each do |theatre| %>
+      <tr>
+        <td><%= theatre.name %></td>
+        <td><%= theatre.location %></td>
+        <td><%= link_to 'Show', theatre %></td>
+        <td><%= link_to 'Edit', edit_theatre_path(theatre) %></td>
+        <td><%= link_to 'Destroy', theatre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Add Screen',  new_theatre_screen_path(theatre)%></td>
+        <td><%= link_to 'Select Theatre', screens_path(theatre)%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Theatre', new_theatre_path %>
