@@ -20,13 +20,16 @@
         <td><%= screen.date %></td>
         <td><%= screen.fee %></td>
         <td><%= screen.theatre.name %></td>
-        <td><%= screen.seat_id %></td>
-        <td><%= screen.timing_id %></td>
+        <td><%= Seat.find(screen.seat_id).seat_count %></td>
+        <td><%= Timing.find(screen.timing_id).time %></td>
+        <%if current_user.type == "Admin"%>
         <td><%= link_to 'Show', screen %></td>
         <td><%= link_to 'Edit', edit_screen_path(screen) %></td>
         <td><%= link_to 'Destroy', screen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Add Movie', new_screen_movies_path(screen)%></td>
+        <%else%>
         <td><%= link_to 'Select Screen', movies_path(screen)%>
+        <%end%>
       </tr>
 
     <% end %>
