@@ -33,7 +33,7 @@
         <td><%= link_to 'Add Coupon', new_movie_coupon_path(movie) %></td>
         <%else%>
 
-        <%if ((movie.screen.date <=> @today) != 1) && ((movie.screen.date <=> @today)) != -1%>
+        <%if ((movie.screen.date <=> @today) != 1)%>
         <td><%= button_to 'Select Movie', {}, disabled: true %></td>
 
         <%else%>
@@ -45,10 +45,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= @time%><br>
-<%= @now%>
-<%= @today%>
-
-
-

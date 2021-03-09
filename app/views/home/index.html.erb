@@ -1,6 +1,9 @@
 
 <%if @user_type == 'Admin'%>
 <%= link_to "Add Shows", theatres_path%>
+<%= link_to "Theatres", theatres_path%>
+<%= link_to "Screens", screens_path%>
+<%= link_to "Movies", movies_path%>
 
 <%elsif @user_type == 'Normal'%>
 <%= link_to 'Book Show', movies_path%>
@@ -19,10 +22,10 @@
   </thead>
 
   <tbody>
-    
+    <h1>My Bookings</h1>
+
     <% @bookings.each do |booking|%>
 <%if booking.user_id == current_user.id%>
-<h1>My Bookings</h1>
       <tr>
         <td><%= Movie.find(booking.movie_id).name %></td>
         <td><%= Theatre.find((booking.movie_id)).name %></td>
