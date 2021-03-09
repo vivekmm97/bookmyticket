@@ -1,9 +1,11 @@
+require 'date'
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
-
+  before_action :checkStatus
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.order(screen_id: :desc)
+    # @movies = Movie.all
   end
 
   # GET /movies/1 or /movies/1.json
@@ -64,5 +66,13 @@ class MoviesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def movie_params
       params.require(:movie).permit(:name, :language, :duration, :image)
+    end
+
+    def checkStatus
+      @today = Time.now.strftime("%d-%m-%Y").to_s
+      @time = Time.now
+      @now = @time.hour.to_s + ":" + @time.min.to_s
+      # @today = "16-03-2021"
+      # @now = "11:30"
     end
 end

@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
     before_action :userkind
   def index
-    # @movies = Movie.all
+    @bookings = Booking.order(id: :desc)
   end
 
   private

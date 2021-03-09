@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
 
   # GET /bookings or /bookings.json
   def index
-    @bookings = Booking.all
+    @bookings = Booking.order(id: :desc)
   end
 
   # GET /bookings/1 or /bookings/1.json
@@ -26,6 +26,16 @@ class BookingsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @booking = @movie.bookings.create(booking_params)
     @booking.user_id = current_user.id
+    @coupon = @booking.coupon_code
+    @seat_count = @booking.seat_count
+    @match = Coupon.find_by(code: @coupon)
+    @screen_fee = @booking.movie.screen.fee
+    @fee = @seat_count * @screen_fee
+    if @match
+      @percentage = @match.percentage
+      @fee = @fee - ((@fee * @percentage)/100)      
+    end
+    @booking.total_fee = @fee
       if @booking.save
         redirect_to root_path
       else
@@ -49,10 +59,8 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1 or /bookings/1.json
   def destroy
     @booking.destroy
-    respond_to do |format|
-      format.html { redirect_to bookings_url, notice: "Booking was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      redirect_to root_path
+    
   end
 
   private
@@ -65,4 +73,5 @@ class BookingsController < ApplicationController
     def booking_params
       params.require(:booking).permit(:coupon_code, :user_id, :movie_id, :total_fee, :seat_count)
     end
+    
 end

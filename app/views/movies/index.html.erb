@@ -26,17 +26,29 @@
         <td><%= movie.screen.date%></td>
         <td><%=Timing.find(movie.screen.timing_id).time %></td>
         <td><%= Seat.find(movie.screen.seat_id).seat_count %></td>
+
         <%if current_user.type == "Admin"%>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Add Coupon', new_movie_coupon_path(movie) %></td>
         <%else%>
-        <td><%= link_to 'Select Movie', new_movie_booking_path(movie)%></td>
+
+        <%if ((movie.screen.date <=> @today) != 1) && ((movie.screen.date <=> @today)) != -1%>
+        <td><%= button_to 'Select Movie', {}, disabled: true %></td>
+
+        <%else%>
+        <td><%= button_to 'Select Movie', new_movie_booking_path(movie), method: :get%></td>
         <%end%>
+        <%end%>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<%= @time%><br>
+<%= @now%>
+<%= @today%>
+
+
 
