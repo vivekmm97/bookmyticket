@@ -33,7 +33,8 @@ class BookingsController < ApplicationController
     @fee = @seat_count * @screen_fee
     if @match
       @percentage = @match.percentage
-      @fee = @fee - ((@fee * @percentage)/100)      
+      @fee = @fee - ((@fee * @percentage)/100) 
+      # @match.coupon_count = @match.coupon_count - 1     
     end
     @booking.total_fee = @fee
       if @booking.save
