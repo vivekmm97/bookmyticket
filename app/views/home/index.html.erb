@@ -8,6 +8,7 @@
 <%elsif @user_type == 'Normal'%>
 <%= link_to 'Book Show', movies_path%>
 <h1>This Is User Home</h1>
+    <h1>My Bookings</h1>
 
 <table>
   <thead>
@@ -16,13 +17,11 @@
       <th>Theatre</th>
       <th>Seats</th>
       <th>Total fee</th>
-      <th>Seat count</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <h1>My Bookings</h1>
 
     <% @bookings.each do |booking|%>
 <%if booking.user_id == current_user.id%>
@@ -32,8 +31,7 @@
         <td><%= booking.seat_count %></td>
         <td><%= booking.total_fee %></td>
         <td><%= link_to 'Show', booking %></td>
-        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Cancel Booking', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <%end%>
     <% end %>
